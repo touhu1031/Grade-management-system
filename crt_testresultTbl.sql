@@ -1,9 +1,9 @@
 /*crt_testresultTbl.sql*/
 /*No.26 Tomoki Hanada*/
 create table testresultTbl(
-	g_code int(8) references seitoTbl(g_code),
+	g_code int references seitoTbl(g_code),
 	term_code char(3) references termTbl(term_code),
-	s_code char(3) refences subjectTbl(s_code),
-	point int(3),
+	s_code char(3) references subjectTbl(s_code),
+	point int,
 	primary key(g_code,term_code,s_code)
 );
