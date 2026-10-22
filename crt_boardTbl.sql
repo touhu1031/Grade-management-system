@@ -1,7 +1,7 @@
 /*
    crt_boardTbl.sql
    J3-22 Toma Nishiumi
-   2026-10-22
+   2026-10-22-09:18
  */
 
 CREATE TABLE boardTbl (
