@@ -1,0 +1,9 @@
+/*20261008*/
+/*Nishiumi Company*/
+/*Toma Nishiumi*/
+/*CRT_TERMTBL.SQL*/
+
+CREATE TABLE kubunTbl(
+	kubun_code CHAR(3) PRIMARY KEY,
+	kubun_name VARCHAR(60)
+);

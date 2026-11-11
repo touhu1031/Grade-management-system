@@ -1,2 +1,2 @@
-drop table tchTbl cascade constraints purge
+insert into kubuntbl(kubun_code,kubun_name) values('KU03','学年末')
 /

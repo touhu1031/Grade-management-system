@@ -1,0 +1,56 @@
+// ins_idTbl.c
+// J3-22 Toma Nishiumi
+// 2026-10-29
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+int GetRnd(int min, int max);
+
+int main(void){
+	int k_code_1;
+	int k_code_2;
+	int k_code_3;
+	int k_code_4;
+
+	char k_code[16];
+	
+	char usr_id[16];
+	char usr_pw[16];
+	char tch_code[16];
+	int i=0;
+
+	FILE *fpout;
+	
+	if( (fpout=fopen("ins_idTbl.sql","w")) == NULL ){
+		printf("ファイルが見つかりません。--ins_idTbl.sql\n");
+		exit(1);
+	}
+
+	for(i=0;i<76;i++){	
+	
+		k_code_1 = GetRnd(1,3);
+		k_code_2 = GetRnd(1,3);
+		k_code_3 = GetRnd(1,3);
+		k_code_4 = GetRnd(1,3);
+		
+		// 文字連結
+		snprintf(k_code, sizeof(k_code), "%d%d%d%d", k_code_1, k_code_2, k_code_3, k_code_4);
+	
+		// id,pw,tch_code
+		snprintf(usr_id, sizeof(usr_id), "DB%02d", i);
+		snprintf(usr_pw, sizeof(usr_pw), "#DB%02d#", i);
+		snprintf(tch_code, sizeof(tch_code), "T%03d", i);
+	
+		// 入力
+		fprintf(fpout,"INSERT INTO idTbl(usr_id,usr_pw,tch_code,k_code)");
+		fprintf(fpout,"VALUES('%s','%s','%s','%s');\n", usr_id,usr_pw,tch_code,k_code);
+	}
+	
+	fclose(fpout);
+	return 0;
+}
+
+int GetRnd(int min,int max){
+	return min + (int)(rand()*(max-min+1.0)/(1.0+RAND_MAX));
+}
